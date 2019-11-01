@@ -26,7 +26,7 @@ class Solution(object):
         """
         Step from 2 to len(s)
         """
-        for step in range (2,l+1):
+        for step in range (2,l):
             # 最多跳几次，再跳就越界
             for i in range(l- step ):
                 j = i + step
