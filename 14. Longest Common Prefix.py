@@ -1,19 +1,25 @@
 class Solution(object):
-    def twoSum(self, nums, target):
+    def romanToInt(self, s):
         """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
+        :type s: str
+        :rtype: int
         """
-        d = {}
-        for i in range(len(nums)):
-            if target - nums[i] not in d:
-                d[nums[i]] = i
-            else:
-                return [d[target - nums[i]],i]
+        d = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+        s = s[::-1]
+        current = d[s[0]]
+        ans = current
+        for i in range(1,len(s)):
+            if d[s[i]] < current:
+                ans = ans - d[s[i]]
+                current = d[s[i]]
+            elif d[s[i]] >= current:
+                ans = ans + d[s[i]]
+                current = d[s[i]]
 
-        return -1
+        return ans
+
+
 
 
 if __name__ == '__main__':
-    print(Solution().twoSum([2, 7, 11, 15],9))
+    print(Solution().romanToInt("III"))
