@@ -20,8 +20,5 @@ class Solution(object):
 
 
 
-
 if __name__ == '__main__':
-    a = [-1,0,-1,2]
-    a.remove(2)
-    print(a)
+    print(Solution().romanToInt("MCMXCIV"))

@@ -4,28 +4,26 @@ class Solution(object):
         :type digits: str
         :rtype: List[str]
         """
-        mapping = {"2": ["a", "b", "c"],
-                   "3": ["d", "f", "e"],
-                   "4": ["g", "h", "i"],
-                   "5": ["j", "k", "l"],
-                   "6": ["m", "n", "o"],
-                   "7": ["p", "q", "r", "s"],
-                   "8": ["t", "u", "v"],
-                   "9": ["w", "x", "y", "z"]}
-
-        if not digits || len(digits) == 0:
+        if len(digits) == 0 or not digits:
             return []
+        ans = [""]
+        mapping = {'2': ['a', 'b', 'c'],
+                   '3': ['d', 'e', 'f'],
+                   '4': ['g', 'h', 'i'],
+                   '5': ['j', 'k', 'l'],
+                   '6': ['m', 'n', 'o'],
+                   '7': ['p', 'q', 'r', 's'],
+                   '8': ['t', 'u', 'v'],
+                   '9': ['w', 'x', 'y', 'z']}
 
-        # when len == 1
-        if len(digits) == 1:
-            return mapping(digits[0])
+        for d in digits:
+            temp = []
+            for previous in ans:
+                for m in mapping[d]:
+                    temp.append(previous + m)
+            ans = temp
 
-        # case when len > 1
-        base = []
-        for c in digits:
-            local = mapping[c]
-            for char in base:
-                for j in mapping[digits[i]]:
-                    res.append(char + j)
-            base = res
+        return ans
 
+if __name__ == '__main__':
+    print(Solution().letterCombinations("23"))
