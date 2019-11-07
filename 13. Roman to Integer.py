@@ -22,4 +22,6 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    print(Solution().romanToInt("III"))
+    a = [-1,0,-1,2]
+    a.remove(2)
+    print(a)
